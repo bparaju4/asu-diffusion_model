@@ -2,6 +2,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+def calculate_stable_time_step(dx, diffusivity):
+    """Calculate a stable time step for the model."""
+    return 0.5*dx**2/diffusivity
+    
+
 def plot_profile(x,cake,color="r"):
     """ Display the cake profile."""
     plt.figure()
@@ -33,7 +39,7 @@ plot_profile(x,C)
 
 
 nt=5000
-dt=0.5*dx**2/D
+dt= calculate_stable_time_step(dx,D)
 
 
 for t in range(0,nt):
